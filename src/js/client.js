@@ -9,7 +9,7 @@ var btnCallback = function (t, opts) {
 window.TrelloPowerUp.initialize({
     'card-buttons': function (t, opts) {
         return [{
-            icon: './images/icon.svg',
+            icon: 'https://burov.fdesign.space/icon.svg',
             text: 'Binotel',
             callback: btnCallback
         }];

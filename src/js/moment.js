@@ -1,4 +1,3 @@
-const t = window.TrelloPowerUp.iframe();
 const call_list = function(t) {
     return t.card('customFieldItems').then(function(card) {
         if (card.customFieldItems[0].value.text) {
@@ -12,7 +11,6 @@ const call_list = function(t) {
         return null;
     });
 };
-console.log(call_list);
 
 document.getElementById('auth-btn').addEventListener('click', function(){
     console.log(call_list);
