@@ -20,11 +20,9 @@
       </li>
     </ul>
     <script>
-        window.TrelloPowerUp.initialize({
-            function(t) {
-                console.log(t.arg('phone'));
-            }
-        });
+        var t = window.TrelloPowerUp.iframe();
+        console.log(t.arg('phone'));
+
         document.getElementById('auth-btn').addEventListener('click', function(){
           console.log('test');
         });
