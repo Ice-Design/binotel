@@ -5,6 +5,24 @@
   </head>
   <body>
     <script src="https://p.trellocdn.com/power-up.min.js" crossorigin="anonymous"></script>
-    <script src="../js/connector.js"></script>
+    <script>
+        TrelloPowerUp.initialize({
+            'card-buttons': function (t, options) {
+                return [
+                    {
+                        icon: "https://i.ibb.co/6sbknH0/logo-stroke-32pt-style-2-no-stroke.png",
+                        text: "Phone call",
+                        callback: function (t) {
+                            return t.card('all')
+                            .then( function(card){
+                                console.log(card);
+                            })
+                        }
+                    }
+                ]
+            }
+        })
+    </script>
+    <!--<script src="../js/connector.js"></script>-->
   </body>
 </html>
