@@ -13,10 +13,8 @@
                         icon: "https://i.ibb.co/6sbknH0/logo-stroke-32pt-style-2-no-stroke.png",
                         text: "Phone call",
                         callback: function (t) {
-                            return t.card('all')
-                            .then( function(card){
-                                console.log(card);
-                            })
+                            return t.card('all').then(card => console.log(card))
+
                         }
                     }
                 ]
