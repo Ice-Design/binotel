@@ -1,18 +1,9 @@
 var btnCallback = function (t, opts) {
-    let number = 0;
-    t.card("all").then(function (card) {
-        number = card.customFieldItems[0].value.text;
-        console.log(number);
+    return t.popup({
+        title: 'Call list Binotel',
+        url: './call-list.html',
+        height: 278
     });
-    setTimeout(function() {
-        console.log(number);
-        return t.popup({
-            title: 'Call list Binotel',
-            url: './call-list.html',
-            args: { phone: number},
-            height: 278
-        });
-    }, 2000);
 };
 
 window.TrelloPowerUp.initialize({

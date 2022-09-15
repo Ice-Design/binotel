@@ -20,17 +20,18 @@
       </li>
     </ul>
     <script>
-        setTimeout(function() {
-            var t = window.TrelloPowerUp.iframe();
-            var arg = t.arg('phone');
-            console.log(arg);
-        }, 5000);
-
+        let number = 0;
+        window.TrelloPowerUp.initialize({
+            function (t, opts) {
+                t.card("all").then(function (card) {
+                    number = card.customFieldItems[0].value.text;
+                    console.log(number);
+                });
+            }
+        });
 
         document.getElementById('auth-btn').addEventListener('click', function(){
-            var t = window.TrelloPowerUp.iframe();
-            var arg = t.arg('phone');
-            console.log(arg);
+            console.log(number);
         });
     </script>
 
