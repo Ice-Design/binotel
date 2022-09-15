@@ -20,9 +20,12 @@
       </li>
     </ul>
     <script>
-        var t = window.TrelloPowerUp.iframe();
-        var arg = t.arg('phone');
-        console.log(arg);
+        setTimeout(function() {
+            var t = window.TrelloPowerUp.iframe();
+            var arg = t.arg('phone');
+            console.log(arg);
+        }, 5000);
+
 
         document.getElementById('auth-btn').addEventListener('click', function(){
             var t = window.TrelloPowerUp.iframe();

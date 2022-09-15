@@ -1,22 +1,24 @@
-var ICON = 'https://binotel.netlify.app/images/icon.svg';
-
 var btnCallback = function (t, opts) {
     let number = 0;
-    return t.popup({
-        title: 'Call list Binotel',
-        url: './call-list.html',
-        args: { phone: t.card("customFieldItems").then(function (card) {
-                return card.customFieldItems[0].value.text;
-            })
-        },
-        height: 278
+    t.card("all").then(function (card) {
+        number = card.customFieldItems[0].value.text;
+        console.log(number);
     });
+    setTimeout(function() {
+        console.log(number);
+        return t.popup({
+            title: 'Call list Binotel',
+            url: './call-list.html',
+            args: { phone: number},
+            height: 278
+        });
+    }, 2000);
 };
 
 window.TrelloPowerUp.initialize({
     'card-buttons': function (t, opts) {
         return [{
-            icon: ICON,
+            icon: './images/icon.svg',
             text: 'Binotel',
             callback: btnCallback
         }];
