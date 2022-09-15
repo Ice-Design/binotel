@@ -3,12 +3,12 @@ var ICON = 'https://binotel.netlify.app/images/bin.png';
 var btnCallback = function (t, opts) {
     t.card("all").then(function (card) {
         console.log(card.customFieldItems);
-        console.log(JSON.stringify(card, null, 2));
-
+        console.log(card.customFieldItems[0].value.text);
+        let number = card.customFieldItems[0].value.text;
         return t.popup({
-            title: 'Change Snooze Time',
+            title: 'Call list Binotel',
             url: './call-list.html',
-            args: { phone: card.customFieldItems },
+            args: { phone: number},
             height: 278
         });
     });
