@@ -1,8 +1,22 @@
-var btnCallback = function (t, opts) {
+const call_list = function(t) {
+    return t.card('customFieldItems').then(function(card) {
+        if (card.customFieldItems[0].value.text) {
+            const number = card.customFieldItems[0].value.text;
+            return fetch(`https://burov.fdesign.space/binotel.php?phone=${number}&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c`)
+                .then(function(response) {
+                    return response.json();
+                })
+        }
+        return null;
+    });
+};
+
+const btnCallback = function (t, opts) {
     return t.popup({
         title: 'Call list Binotel',
         url: './call-list.html',
-        height: 278
+        height: 278,
+        args: { myArgs: call_list },
     });
 };
 
