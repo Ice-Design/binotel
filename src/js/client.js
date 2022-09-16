@@ -4,6 +4,7 @@ const call_list = function(t) {
             const number = card.customFieldItems[0].value.text;
             return fetch(`https://burov.fdesign.space/binotel.php?phone=${number}&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c`)
                 .then(function(response) {
+                    console.log(response.json());
                     return response.json();
                 })
         }
@@ -23,7 +24,7 @@ const btnCallback = function (t, opts) {
 window.TrelloPowerUp.initialize({
     'card-buttons': function (t, opts) {
         return [{
-            icon: 'https://burov.fdesign.space/icon.svg',
+            icon: 'https://burov.fdesign.space/icons.svg',
             text: 'Binotel',
             callback: btnCallback
         }];
