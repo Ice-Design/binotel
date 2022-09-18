@@ -6,7 +6,6 @@ const call_list = function(number) {
 };
 
 const t = window.TrelloPowerUp.iframe();
-console.log(t.arg('myArgs'));
 let phone;
 t.card("all").then(function (card) {
     phone = card.customFieldItems[0].value.text;
@@ -14,8 +13,11 @@ t.card("all").then(function (card) {
 console.log(call_list(phone));
 
 document.getElementById('auth-btn').addEventListener('click', function(){
-    console.log(call_list(arg));
     const t = window.TrelloPowerUp.iframe();
-    let arg = t.arg('myArgs');
-    console.log(arg);
+    let phone;
+    t.card("all").then(function (card) {
+        phone = card.customFieldItems[0].value.text;
+    });
+    console.log(phone);
+    console.log(call_list(phone));
 });
