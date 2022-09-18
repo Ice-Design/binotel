@@ -1,10 +1,17 @@
+const call_list = function(t) {
+    return t.card('all').then(function(card) {
+        if (card.customFieldItems[0].value.text) {
+            return card.customFieldItems[0].value.text;
+        }
+    });
+};
 
 const btnCallback = function (t, opts) {
     return t.popup({
         title: 'Call list Binotel',
         url: './call-list.html',
         height: 278,
-        args: { myArgs: 'testim' },
+        args: { myArgs: call_list(t) },
     });
 };
 
