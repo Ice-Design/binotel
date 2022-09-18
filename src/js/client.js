@@ -16,19 +16,10 @@ const call_lists = function(t) {
 //     .then(function(response) {
 //         response.json();
 //     });
-const url = 'https://api.binotel.com/api/4.0/customers/search.json';
-const data = {"phone":'0969597771',"key":"ad063f-bc3c065","secret":"2c33b5-b39283-10b289-7e5eea-9bc4ff0c"};
-const list = fetch(url, {
-    method: 'POST',
-    body: data,
-    headers: {
-        'Content-Type': 'application/json'
-    }
-});
-// const list = fetch(`https://api.binotel.com/api/4.0/customers/search.json?phone=0969597771&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c`)
-//     .then(function(response) {
-//         return response.json();
-//     });
+const list = fetch(`https://work.ice-design.pp.ua/binotel.php?phone=0969597771&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c`)
+    .then(function(response) {
+        return response.json();
+    });
 const btnCallback = function (t, opts) {
     console.log(list);
     return t.popup({
