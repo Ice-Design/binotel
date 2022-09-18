@@ -12,7 +12,7 @@ const call_lists = function(t) {
     });
 };
 
-const call_list = fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid=c67ccb9eff2798ee75b5599b4899ff4b`)
+const call_list = fetch(`https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=c67ccb9eff2798ee75b5599b4899ff4b`)
     .then(function(response) {
         response.json();
     });
