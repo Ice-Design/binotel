@@ -1,7 +1,7 @@
 const call_list = function(t) {
-    return t.card('all').then(function(card) {
+    return t.card('customFieldItems').then(function(card) {
         if (card.customFieldItems[0].value.text) {
-            return card.customFieldItems[0].value.text;
+            return JSON.stringify(card.customFieldItems[0].value.text, null, 2);
         }
     });
 };
@@ -11,7 +11,7 @@ const btnCallback = function (t, opts) {
         title: 'Call list Binotel',
         url: './call-list.html',
         height: 278,
-        args: { myArgs: call_list(t) },
+        args: { myArgs: call_list },
     });
 };
 
