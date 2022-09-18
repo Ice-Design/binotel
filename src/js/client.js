@@ -11,7 +11,6 @@ const call_list = function(t) {
     });
 };
 const btnCallback = function (t, opts) {
-    console.log(list);
     return t.popup({
         title: 'Call list Binotel',
         url: './call-list.html',
