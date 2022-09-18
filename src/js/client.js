@@ -1,4 +1,4 @@
-const call_lists = function(t) {
+const call_list = function(t) {
     let phone;
     t.card("all").then(function (card) {
         phone = card.customFieldItems[0].value.text;
