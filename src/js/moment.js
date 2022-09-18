@@ -7,10 +7,11 @@ const call_list = function(number) {
 
 const t = window.TrelloPowerUp.iframe();
 console.log(t.arg('myArgs'));
-let arg = t.card("all").then(function (card) {
-    return JSON.stringify(card.customFieldItems[0].value.text, null, 2);
+let phone;
+t.card("all").then(function (card) {
+    phone = card.customFieldItems[0].value.text;
 });
-console.log(call_list(arg));
+console.log(call_list(phone));
 
 document.getElementById('auth-btn').addEventListener('click', function(){
     console.log(call_list(arg));

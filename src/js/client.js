@@ -1,9 +1,9 @@
-const call_list = function(t) {
-    return t.card('customFieldItems').then(function(card) {
-        if (card.customFieldItems[0].value.text) {
-            return JSON.stringify(card.customFieldItems[0].value.text, null, 2);
-        }
+const call_lists = function(t) {
+    let phone;
+    t.card("all").then(function (card) {
+        phone = card.customFieldItems[0].value.text;
     });
+    return phone;
 };
 
 const btnCallback = function (t, opts) {
@@ -11,7 +11,7 @@ const btnCallback = function (t, opts) {
         title: 'Call list Binotel',
         url: './call-list.html',
         height: 278,
-        args: { myArgs: call_list },
+        args: { myArgs: call_list(t) },
     });
 };
 
