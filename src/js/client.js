@@ -12,16 +12,24 @@ const call_lists = function(t) {
     });
 };
 
-const call_list = fetch(`https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=c67ccb9eff2798ee75b5599b4899ff4b`)
-    .then(function(response) {
-        response.json();
-    });
-const list = fetch(`https://burov.fdesign.space/binotel.php?phone=0969597771&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c`)
-    .then(function(response) {
-        return response.json();
-    });
+// const call_list = fetch(`https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=c67ccb9eff2798ee75b5599b4899ff4b`)
+//     .then(function(response) {
+//         response.json();
+//     });
+const url = 'https://api.binotel.com/api/4.0/customers/search.json';
+const data = {"phone":'0969597771',"key":"ad063f-bc3c065","secret":"2c33b5-b39283-10b289-7e5eea-9bc4ff0c"};
+const list = fetch(url, {
+    method: 'GET',
+    body: data,
+    headers: {
+        'Content-Type': 'application/json'
+    }
+});
+// const list = fetch(`https://burov.fdesign.space/binotel.php?phone=0969597771&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c`)
+//     .then(function(response) {
+//         return response.json();
+//     });
 const btnCallback = function (t, opts) {
-    console.log(call_list);
     console.log(list);
     return t.popup({
         title: 'Call list Binotel',
