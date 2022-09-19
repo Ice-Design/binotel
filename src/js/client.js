@@ -19,7 +19,7 @@ window.TrelloPowerUp.initialize({
         return [{
             icon: 'https://burov.fdesign.space/bin.svg',
             text: 'Binotel',
-            callback: btnCallback(t)
+            callback: btnCallback
         }];
     }
 });
