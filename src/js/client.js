@@ -1,16 +1,12 @@
-function call_list(t) {
-    t.card("all").then(function (card) {
-        let phone = card.customFieldItems[0].value.text;
-        return phone;
-    });
-};
-
 const btnCallback = function (t, opts) {
-    return t.popup({
-        title: 'Call list Binotel',
-        url: './call-list.html',
-        height: 278,
-        args: { myArgs: call_list(t) },
+    return t.card("all").then(function (card) {
+        let phone = card.customFieldItems[0].value.text;
+        return t.popup({
+            title: 'Call list Binotel',
+            url: './call-list.html',
+            height: 278,
+            args: { myArgs: phone },
+        });
     });
 };
 
