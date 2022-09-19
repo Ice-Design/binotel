@@ -1,5 +1,5 @@
-const call_list = function(t) {
-    return t.card("all").then(function (card) {
+function call_list(t) {
+    t.card("all").then(function (card) {
         let phone = card.customFieldItems[0].value.text;
         return phone;
     });
@@ -10,7 +10,7 @@ const btnCallback = function (t, opts) {
         title: 'Call list Binotel',
         url: './call-list.html',
         height: 278,
-        args: { myArgs: call_list(phone) },
+        args: { myArgs: call_list(t) },
     });
 };
 
