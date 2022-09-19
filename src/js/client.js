@@ -1,12 +1,11 @@
 const call_list = function(t) {
     return t.card("all").then(function (card) {
         let phone = card.customFieldItems[0].value.text;
-        console.log(phone);
         return phone;
     });
 };
 
-var btnCallback = function (t, opts) {
+const btnCallback = function (t, opts) {
     return t.popup({
         title: 'Call list Binotel',
         url: './call-list.html',

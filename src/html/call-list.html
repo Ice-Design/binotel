@@ -23,7 +23,12 @@
   <!--<script src="../js/moment.js"></script>-->
   <script>
       const t = window.TrelloPowerUp.iframe();
-      console.log(t.arg('myArg'));
+      let number = t.arg('myArg');
+      console.log(number);
+      fetch(`https://work.ice-design.pp.ua/binotel.php?phone=${number}&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c`)
+      .then(function(response) {
+          console.log(response.json());
+      });
 
       document.getElementById('auth-btn').addEventListener('click', function(){
           const t = window.TrelloPowerUp.iframe();
