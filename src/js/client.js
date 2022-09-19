@@ -5,7 +5,7 @@ const btnCallback = function (t, opts) {
             title: 'Call list Binotel',
             url: './call-list.html',
             height: 278,
-            args: { myArgs: phone },
+            args: { arg: phone },
         });
     });
 };
