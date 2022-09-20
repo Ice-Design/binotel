@@ -1,6 +1,7 @@
 const btnCallback = function (t, opts) {
     return t.card("all").then(function (card) {
         let phone = card.customFieldItems[0].value.text;
+        console.log(card.customFieldItems);
         return t.popup({
             title: 'Call list Binotel',
             url: './call-list.html',
@@ -13,7 +14,7 @@ const btnCallback = function (t, opts) {
 window.TrelloPowerUp.initialize({
     'card-buttons': function (t, opts) {
         return [{
-            icon: 'https://burov.fdesign.space/bin.svg',
+            icon: 'https://work.ice-design.pp.ua/icon.svg',
             text: 'Binotel',
             callback: btnCallback
         }];
