@@ -3,33 +3,72 @@
   <head>
     <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css">
     <script src="https://p.trellocdn.com/power-up.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
   </head>
   <body>
     <ul>
-      <li>
+      <li class="title_list">
         <b>Статус:</b>
         <b>Тривалість:</b>
         <b>Дата:</b>
         <b>Запис:</b>
       </li>
-      <li>
-        <b class="green">Прийнятий</b>
-        <b>Тривалість:</b>
-        <b>Дата:</b>
-        <b><button id="auth-btn" type="submit" class="on">📞</button></b>
-      </li>
     </ul>
   </body>
+  <style>
+    ul{
+      display: flex;
+      flex-wrap: wrap;
+    }
+    li {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+    li.yes {
+      color: #fff;
+      background: green;
+      border-radius: 3px;
+      padding: 2px;
+    }
+    li.no {
+      color: #fff;
+      background: red;
+      border-radius: 3px;
+      padding: 2px;
+    }
+  </style>
   <!--<script src="../js/moment.js"></script>-->
   <script>
       const t = window.TrelloPowerUp.iframe();
       let number = t.arg('arg');
       const btnCallback = function (number) {
-          return fetch(`https://work.ice-design.pp.ua/binotel.php?phone=${number}&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c`)
-              .then(function(response) {
-                  console.log(response.json());
+          let arrays;
+          fetch('https://work.ice-design.pp.ua/binotel.php?phone=0679589192&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c')
+              .then((response) => {
                   return response.json();
+              })
+              .then((data) => {
+                  arrays = Object.values(data);
               });
+          for (let i = 0; i < arrays.length; i++) {
+              if (arrays[i]['callType'] != 0){
+                  var minutes = parseInt((arrays[i]['billsec'] * 1000) % (1000 * 60 * 60) / (1000 * 60));
+                  var seconds = ((arrays[i]['billsec'] * 1000) % (1000 * 60)) / 1000;
+                  $('.title_list').after('<li class="num_'+[i]+'"></li>');
+                  if (arrays[i]['disposition'] == 'ANSWER'){
+                      $('.num_'+[i]).append($('<b class="yes">Прийнятий</b>'));
+                  }else if(arrays[i]['disposition'] == 'CANCEL'){
+                      $('.num_'+[i]).append($('<b class="no">Відхиленний</b>'));
+                  }
+                  $('.num_'+[i]).append($('<span>', {
+                      'text': minutes+':'+seconds
+                  }));
+                  $('.num_'+[i]).append($('<span>', { 'text': new Date(arrays[i]['startTime']*1000).toLocaleString("ro-RO")}));
+                  $('.num_'+[i]).append($('<button id="'+arrays[i]['callID']+'">📞</button>'));
+              }
+          }
       };
       console.log(btnCallback(number));
 
