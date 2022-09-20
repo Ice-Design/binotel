@@ -1,8 +1,9 @@
 const t = window.TrelloPowerUp.iframe();
 let number = t.arg('arg');
+
 const btnCallback = function (arg) {
     let arrays = [];
-    fetch('https://work.ice-design.pp.ua/binotel.php?phone=${arg}&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c')
+    fetch(`https://work.ice-design.pp.ua/binotel.php?phone=${arg}&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c`)
     .then((response) => {
         return response.json();
     })
@@ -29,7 +30,7 @@ const btnCallback = function (arg) {
 console.log(btnCallback(number));
 $('li button').on('click', function(e) {
     let call_id = $(this).attr('id');
-    fetch('https://work.ice-design.pp.ua/binotel.php?callid=${call_id}&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c')
+    fetch(`https://work.ice-design.pp.ua/binotel.php?callid=${call_id}&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c`)
     .then((response) => {
         return response.json();
     })
