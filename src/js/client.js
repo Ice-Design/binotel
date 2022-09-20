@@ -14,7 +14,7 @@ const btnCallback = function (t, opts) {
 window.TrelloPowerUp.initialize({
     'card-buttons': function (t, opts) {
         return [{
-            icon: 'https://work.ice-design.pp.ua/icon.svg',
+            icon: 'https://work.ice-design.pp.ua/icons.svg',
             text: 'Binotel',
             callback: btnCallback
         }];

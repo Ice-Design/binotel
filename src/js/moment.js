@@ -1,8 +1,8 @@
 const t = window.TrelloPowerUp.iframe();
 let number = t.arg('arg');
-const btnCallback = function (number) {
+const btnCallback = function (arg) {
     let arrays = [];
-    fetch('https://work.ice-design.pp.ua/binotel.php?phone=0679589192&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c')
+    fetch('https://work.ice-design.pp.ua/binotel.php?phone=${arg}&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c')
     .then((response) => {
         return response.json();
     })
@@ -18,9 +18,7 @@ const btnCallback = function (number) {
                 }else if(arrays[i]['disposition'] == 'CANCEL'){
                     $('.num_'+[i]).append($('<b class="no">Відхиленний</b>'));
                 }
-                $('.num_'+[i]).append($('<span>', {
-                    'text': '🕐'+minutes+':'+seconds+' хв.'
-                }));
+                $('.num_'+[i]).append($('<span>', {'text': '🕐'+minutes+':'+seconds+' хв.'}));
                 $('.num_'+[i]+' span').append($('<span>', { 'text': new Date(arrays[i]['startTime']*1000).toLocaleString("ro-RO")}));
                 $('.num_'+[i]).append($('<button id="'+arrays[i]['callID']+'">📞</button>'));
             }
@@ -29,7 +27,14 @@ const btnCallback = function (number) {
 
 };
 console.log(btnCallback(number));
-
-document.getElementById('auth-btn').addEventListener('click', function(){
-
+$('li button').on('click', function(e) {
+    let call_id = $(this).attr('id');
+    fetch('https://work.ice-design.pp.ua/binotel.php?callid=${call_id}&key=ad063f-bc3c065&secret=2c33b5-b39283-10b289-7e5eea-9bc4ff0c')
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        window.open(data, '_blank');
+        console.log(data);
+    });
 });
