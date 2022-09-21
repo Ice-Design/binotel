@@ -1,15 +1,5 @@
 const t = window.TrelloPowerUp.iframe();
 let number = t.arg('arg');
-function getCall(call_id) {
-    fetch(`https://work.ice-design.pp.ua/binotel.php?callid=${call_id}&key=%%APP_ID%%&secret=%%SECRET%%`)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            window.open(data, '_blank');
-            console.log(data);
-        });
-};
 const btnCallback = function (arg) {
     let arrays = [];
     fetch(`https://work.ice-design.pp.ua/binotel.php?phone=${arg}&key=%%APP_ID%%&secret=%%SECRET%%`)
@@ -30,22 +20,24 @@ const btnCallback = function (arg) {
                 }
                 $('.num_'+[i]).append($('<span>', {'text': '🕐'+minutes+':'+seconds+' хв.'}));
                 $('.num_'+[i]+' span').append($('<span>', { 'text': new Date(arrays[i]['startTime']*1000).toLocaleString("ro-RO")}));
-                $('.num_'+[i]).append($('<button onClick="getCall('+arrays[i]['callID']+')" id="'+arrays[i]['callID']+'">📞</button>'));
+                $('.num_'+[i]).append($('<button class="getCall" id="'+arrays[i]['callID']+'">📞</button>'));
             }
         }
     });
 };
+document.addEventListener( 'click', function ( el ) {
+    if ( el.target && el.target.classList.contains( 'getCall' ) ) {
+        let call_id = el.target.id;
+        fetch(`https://work.ice-design.pp.ua/binotel.php?callid=${call_id}&key=%%APP_ID%%&secret=%%SECRET%%`)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            window.open(data, '_blank');
+            console.log(data);
+        });
+    }
+} );
 $(document).ready(function() {
     btnCallback(number);
-    $('.call_list button').on('click', function() {
-        let call_id = $(this).attr('id');
-        fetch(`https://work.ice-design.pp.ua/binotel.php?callid=${call_id}&key=%%APP_ID%%&secret=%%SECRET%%`)
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                window.open(data, '_blank');
-                console.log(data);
-            });
-    });
 });
