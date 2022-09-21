@@ -9,7 +9,6 @@ const btnCallback = function (t, opts) {
                     height: 278,
                     args: { arg: phone },
                 });
-                console.log(card.customFieldItems[i].value.text);
             }
         }
 
