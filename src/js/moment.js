@@ -21,14 +21,15 @@ const btnCallback = function (arg) {
                 }
                 $('.num_'+[i]).append($('<span>', {'text': '🕐'+minutes+':'+seconds+' хв.'}));
                 $('.num_'+[i]+' span').append($('<span>', { 'text': new Date(arrays[i]['startTime']*1000).toLocaleString("ro-RO")}));
-                $('.num_'+[i]).append($('<button onclick="getCall('+arrays[i]['callID']+')">📞</button>'));
+                $('.num_'+[i]).append($('<button id="'+arrays[i]['callID']+'">📞</button>'));
             }
         }
     });
 };
 $(document).ready(function() {
     btnCallback(number);
-    function getCall(call_id) {
+    $('.call_list li button').on('click', function() {
+        let call_id = $(this).attr('id');
         fetch(`https://work.ice-design.pp.ua/binotel.php?callid=${call_id}&key=%%APP_ID%%&secret=%%SECRET%%`)
             .then((response) => {
                 return response.json();
@@ -37,5 +38,5 @@ $(document).ready(function() {
                 window.open(data, '_blank');
                 console.log(data);
             });
-    }
+    });
 });
