@@ -34,7 +34,6 @@ document.addEventListener( 'click', function ( el ) {
         })
         .then((data) => {
             window.open(data, '_blank');
-            console.log(data);
         });
     }
 } );

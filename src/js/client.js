@@ -3,6 +3,7 @@ const btnCallback = function (t, opts) {
         for (let i = 0; i < card.customFieldItems.length; i++) {
             if (card.customFieldItems[i]['idCustomField'] == '6323289097e72700a118e186'){
                 let phone = card.customFieldItems[i].value.text;
+                phone = phone.replace(/[\D]+/g, '');
                 return t.popup({
                     title: 'Call list Binotel',
                     url: './call-list.html',
