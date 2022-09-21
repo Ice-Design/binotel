@@ -9,7 +9,7 @@ function getCall(call_id) {
             window.open(data, '_blank');
             console.log(data);
         });
-});
+};
 const btnCallback = function (arg) {
     let arrays = [];
     fetch(`https://work.ice-design.pp.ua/binotel.php?phone=${arg}&key=%%APP_ID%%&secret=%%SECRET%%`)
