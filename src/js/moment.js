@@ -30,7 +30,7 @@ const btnCallback = function (arg) {
                 }
                 $('.num_'+[i]).append($('<span>', {'text': '🕐'+minutes+':'+seconds+' хв.'}));
                 $('.num_'+[i]+' span').append($('<span>', { 'text': new Date(arrays[i]['startTime']*1000).toLocaleString("ro-RO")}));
-                $('.num_'+[i]).append($('<button onClick="getCall("'+arrays[i]['callID']+'")" id="'+arrays[i]['callID']+'">📞</button>'));
+                $('.num_'+[i]).append($('<button onClick="getCall('+arrays[i]['callID']+')" id="'+arrays[i]['callID']+'">📞</button>'));
             }
         }
     });
