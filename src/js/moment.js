@@ -15,12 +15,17 @@ const btnCallback = function (arg) {
                 $('.title_list').after('<li class="num_'+[i]+'"></li>');
                 if (arrays[i]['disposition'] == 'ANSWER'){
                     $('.num_'+[i]).append($('<b class="yes">Прийнятий</b>'));
+                    $('.num_'+[i]).append($('<span>', {'text': '🕐'+minutes+':'+seconds+' хв.'}));
+                    $('.num_'+[i]+' span').append($('<span>', { 'text': new Date(arrays[i]['startTime']*1000).toLocaleString("ro-RO")}));
+                    $('.num_'+[i]).append($('<button class="getCall" id="'+arrays[i]['callID']+'">📞</button>'));
                 }else if(arrays[i]['disposition'] == 'CANCEL'){
                     $('.num_'+[i]).append($('<b class="no">Відхиленний</b>'));
+                    $('.num_'+[i]+' span').append($('<span>---</span><span>', { 'text': new Date(arrays[i]['startTime']*1000).toLocaleString("ro-RO")}));
+                }else if(arrays[i]['disposition'] == 'BUSY'){
+                    $('.num_'+[i]).append($('<b class="no">Зайнятий</b>'));
+                    $('.num_'+[i]+' span').append($('<span>---</span><span>', { 'text': new Date(arrays[i]['startTime']*1000).toLocaleString("ro-RO")}));
                 }
-                $('.num_'+[i]).append($('<span>', {'text': '🕐'+minutes+':'+seconds+' хв.'}));
-                $('.num_'+[i]+' span').append($('<span>', { 'text': new Date(arrays[i]['startTime']*1000).toLocaleString("ro-RO")}));
-                $('.num_'+[i]).append($('<button class="getCall" id="'+arrays[i]['callID']+'">📞</button>'));
+
             }
         }
     });
