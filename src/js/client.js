@@ -1,12 +1,11 @@
 const btnCallback = function (t, opts) {
     return t.card("all").then(function (card) {
+        console.log(card.customFieldItems);
         for (let i = 0; i < card.customFieldItems.length; i++) {
             if (card.customFieldItems[i]['idCustomField'] == '6323289097e72700a118e186'){
                 let phone = card.customFieldItems[i].value.text;
                 phone = phone.replace(/[\D]+/g, '');
-                if (phone.substr(0, 2) == '38'){
-                    phone.slice(2)
-                }
+                if (phone.substr(0, 2) == '38') phone.slice(2);
                 return t.popup({
                     title: 'Call list Binotel',
                     url: './call-list.html',
