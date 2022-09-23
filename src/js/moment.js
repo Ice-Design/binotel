@@ -20,10 +20,10 @@ const btnCallback = function (arg) {
                     $('.num_'+[i]).append($('<button class="getCall" id="'+arrays[i]['callID']+'">📞</button>'));
                 }else if(arrays[i]['disposition'] == 'CANCEL'){
                     $('.num_'+[i]).append($('<b class="no">Відхиленний</b>'));
-                    $('.num_'+[i]+' span').append($('<span>', { 'text': new Date(arrays[i]['startTime']*1000).toLocaleString("ro-RO")}));
+                    $('.num_'+[i]).append($('<span>', { 'text': new Date(arrays[i]['startTime']*1000).toLocaleString("ro-RO")}));
                 }else if(arrays[i]['disposition'] == 'BUSY'){
                     $('.num_'+[i]).append($('<b class="no">Зайнятий</b>'));
-                    $('.num_'+[i]+' span').append($('<span>', { 'text': new Date(arrays[i]['startTime']*1000).toLocaleString("ro-RO")}));
+                    $('.num_'+[i]).append($('<span>', { 'text': new Date(arrays[i]['startTime']*1000).toLocaleString("ro-RO")}));
                 }
 
             }
