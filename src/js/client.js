@@ -24,5 +24,11 @@ window.TrelloPowerUp.initialize({
             text: 'Binotel',
             callback: btnCallback
         }];
+    },
+    'show-settings': function(t, options){
+        return t.popup({
+            title: 'Binotel API Settings',
+            url: './settings.html',
+        });
     }
 });

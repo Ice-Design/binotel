@@ -11,10 +11,6 @@ fieldset {
   margin: 0 2px 4px 2px;
 }
 
-input[type="radio"], input[type="checkbox"] {
-  cursor: pointer;
-}
-
 label {
   cursor: pointer;
   display: unset;
@@ -27,29 +23,4 @@ label {
 legend {
   font-weight: bold;
   padding: 0 4px;
-}
-
-.radios {
-  padding-left: 4px;
-}
-
-.radio-option {
-  margin-bottom: 4px;
-}
-
-.radio-option:last-of-type {
-  margin-bottom: 0;
-}
-
-.opts-group {
-  margin-bottom: 8px;
-}
-
-.opts-group:last-of-type {
-  margin-bottom: 0;
-}
-
-.opts-group p {
-  font-weight: 500;
-  margin: 4px 0;
 }
