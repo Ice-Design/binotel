@@ -29,6 +29,7 @@ window.TrelloPowerUp.initialize({
         return t.popup({
             title: 'Binotel API Settings',
             url: './settings.html',
+            height: 300
         });
     }
 });

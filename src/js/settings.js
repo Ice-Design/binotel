@@ -15,15 +15,7 @@ document.querySelector('.api #customFields').addEventListener('change', (e) => {
 
 t.render(() => {
   return t.getAll().then((data) => {
-    t.board("all").then(function (board) {
-        arrays = board.customFields;
-        for (let i = 0; i < arrays.length; i++) {
-            jQuery('.api #customFields').append(jQuery("<option></option>", {value: arrays[i]['id'], text: arrays[i]['name']}));
-            if (data.board.private.customFields == arrays[i]['id']) {
-                jQuery('.api #customFields option')[i].selected = true;
-            }
-        }
-    });
+    console.log(data.board.private);
     if (data && data.board.private.key) {
       document.querySelector(`.api #key`).value(data.board.private.key);
     }
@@ -35,6 +27,14 @@ t.render(() => {
     }
     var context = t.getContext();
     document.querySelector(`b.id-bord`).value(context.board);
-    t.sizeTo(document.body);
+    t.board("all").then(function (board) {
+        let arrays = data.board.customFields;
+        for (let i = 0; i < arrays.length; i++) {
+            jQuery('.api #customFields').append(jQuery("<option></option>", {value: arrays[i]['id'], text: arrays[i]['name']}));
+            if (data.board.private.customFields == arrays[i]['id']) {
+                jQuery('.api #customFields option')[i].selected = true;
+            }
+        }
+    });
   });
 });
