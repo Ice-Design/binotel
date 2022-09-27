@@ -15,18 +15,6 @@ document.querySelector('.api #customFields').addEventListener('change', (e) => {
 
 t.render(() => {
   return t.getAll().then((data) => {
-    console.log(data.board.private);
-    if (data && data.board.private.key) {
-      document.querySelector(`.api #key`).value(data.board.private.key);
-    }
-    if (data && data.board.private.secret) {
-        document.querySelector(`.api #secret-key`).value(data.board.private.secret);
-    }
-    if (data && data.board.private.bought) {
-        document.querySelector(`.api #bought-key`).value(data.board.private.bought);
-    }
-    var context = t.getContext();
-    document.querySelector(`b.id-bord`).value(context.board);
     t.board("all").then(function (board) {
         let arrays = data.board.customFields;
         for (let i = 0; i < arrays.length; i++) {
@@ -36,5 +24,16 @@ t.render(() => {
             }
         }
     });
+    if (data && data.board.private.key) {
+      document.querySelector('.api #key').value = data.board.private.key;
+    }
+    if (data && data.board.private.secret) {
+        document.querySelector(`.api #secret-key`).value = data.board.private.secret;
+    }
+    if (data && data.board.private.bought) {
+        document.querySelector(`.api #bought-key`).value = data.board.private.bought;
+    }
+    var context = t.getContext();
+    document.querySelector(`b.id-bord`).textContent = context.board;
   });
 });
