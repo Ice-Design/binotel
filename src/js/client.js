@@ -1,7 +1,9 @@
 const btnCallback = function (t, opts) {
     return t.card("all").then(function (card) {
         for (let i = 0; i < card.customFieldItems.length; i++) {
-            if (card.customFieldItems[i]['idCustomField'] == '62e17ede5809d71f00acf324'){
+            let customFields;
+            t.get('board', 'shared', 'customFields').then(function (data) { customFields = data; });
+            if (card.customFieldItems[i]['idCustomField'] == customFields){
                 let phone = card.customFieldItems[i].value.text;
                 phone = phone.replace(/[\D]+/g, '');
                 if (phone.substr(0, 2) == '38') phone.slice(2);
@@ -29,7 +31,7 @@ window.TrelloPowerUp.initialize({
         return t.popup({
             title: 'Binotel API Settings',
             url: './settings.html',
-            height: 300
+            height: 350
         });
     }
 });
