@@ -4,7 +4,7 @@ document.querySelector('.api #key').addEventListener('change', (e) => {
     t.set('board', 'shared', 'key', e.target.value);
 });
 document.querySelector('.api #secret-key').addEventListener('change', (e) => {
-    t.set('board', 'shared', 'secret', e.target.value);
+    t.set('board', 'shared', 'secretKey', e.target.value);
 });
 document.querySelector('.api #bought-key').addEventListener('change', (e) => {
     t.set('board', 'shared', 'bought', e.target.value);
@@ -29,8 +29,8 @@ t.render(() => {
     if (data && data.board.shared.key) {
       document.querySelector('.api #key').value = data.board.shared.key;
     }
-    if (data && data.board.shared.secret) {
-        document.querySelector(`.api #secret-key`).value = data.board.shared.secret;
+    if (data && data.board.shared.secretKey) {
+        document.querySelector(`.api #secret-key`).value = data.board.shared.secretKey;
     }
     if (data && data.board.shared.bought) {
         document.querySelector(`.api #bought-key`).value = data.board.shared.bought;

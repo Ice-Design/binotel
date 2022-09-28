@@ -2,7 +2,7 @@ const t = window.TrelloPowerUp.iframe();
 let number = t.arg('arg');
 const btnCallback = function (arg) {
     t.getAll().then((data) => {
-        fetch(`https://work.ice-design.pp.ua/binotel.php?phone=${arg}&key=${data.board.shared.key}&secret=${data.board.shared.secret}&bought=${data.board.shared.bought}`)
+        fetch(`https://work.ice-design.pp.ua/binotel.php?phone=${arg}&key=${data.board.shared.key}&secret=${data.board.shared.secretKey}&bought=${data.board.shared.bought}`)
             .then((response) => {
                 return response.json();
             })
@@ -36,7 +36,7 @@ document.addEventListener( 'click', function ( el ) {
     if ( el.target && el.target.classList.contains( 'getCall' ) ) {
         let call_id = el.target.id;
         t.getAll().then((data) => {
-            fetch(`https://work.ice-design.pp.ua/binotel.php?callid=${call_id}&key=${data.board.shared.key}&secret=${data.board.shared.secret}&bought=${data.board.shared.bought}`)
+            fetch(`https://work.ice-design.pp.ua/binotel.php?callid=${call_id}&key=${data.board.shared.key}&secret=${data.board.shared.secretKey}&bought=${data.board.shared.bought}`)
                 .then((response) => {
                     return response.json();
                 })
