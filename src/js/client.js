@@ -1,6 +1,6 @@
 const btnCallback = function (t, opts) {
     return t.card("all").then(function (card) {
-        t.get('board', 'shared', 'customFields').then(function (data) {
+        return t.get('board', 'shared', 'customFields').then(function (data) {
             for (let i = 0; i < card.customFieldItems.length; i++) {
                 if (card.customFieldItems[i]['idCustomField'] == data){
                     let phone = card.customFieldItems[i].value.text;
