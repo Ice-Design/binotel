@@ -12,6 +12,9 @@ document.querySelector('.api #bought-key').addEventListener('change', (e) => {
 document.querySelector('.api #customFields').addEventListener('change', (e) => {
     t.set('board', 'shared', 'customFields', e.target.value);
 });
+document.querySelector('.api #lineId').addEventListener('change', () => {
+    t.set('board', 'shared', 'lineId', Array.from(document.querySelector('#lineId').selectedOptions).map(({ value }) => value));
+});
 
 t.render(() => {
   return t.getAll().then((data) => {
@@ -26,6 +29,27 @@ t.render(() => {
             }
         }
     });
+    if (data && data.board.shared.key && data.board.shared.secretKey) {
+        fetch(`https://work.ice-design.pp.ua/binotel.php?line=true&key=${data.board.shared.key}&secret=${data.board.shared.secretKey}`)
+          .then((response) => {
+              return response.json();
+          })
+          .then((data) => {
+              let arrays = Object.values(data);
+              arrays.forEach((element) => {
+                  jQuery('.api #lineId').append(jQuery("<option></option>", {value: element, text: element}));
+              })
+        });
+    }
+    if (data && data.board.shared.lineId) {
+        let values = Array.from(document.getElementById('#lineId').selectedOptions).map(({ value }) => value);
+        let lineId = data.board.shared.lineId;
+        values.forEach((element) => {
+            for (let i = 0; i < lineId.length; i++) {
+                if (element == lineId[i]) jQuery('.api #lineId option')[i].selected = true;
+            }
+        });
+    }
     if (data && data.board.shared.key) {
       document.querySelector('.api #key').value = data.board.shared.key;
     }
