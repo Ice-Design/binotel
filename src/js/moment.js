@@ -55,7 +55,7 @@ document.addEventListener( 'click', function ( el ) {
         t.getAll().then((data) => {
             fetch(`https://work.ice-design.pp.ua/binotel.php?calling=${call_id}&callphones=${number}&key=${data.board.shared.key}&secret=${data.board.shared.secretKey}&bought=${data.board.shared.bought}`)
             .then((response) => {
-                if (response == '1'){
+                if (response == 'true'){
                     jQuery('.calling#'+call_id).css({"background-color": "green","color": "white"});
                 }else{
                     jQuery('.calling#'+call_id).css({"background-color": "red","color": "white"});
