@@ -18,6 +18,17 @@ document.querySelector('.api #lineId').addEventListener('change', () => {
 
 t.render(() => {
   return t.getAll().then((data) => {
+    if (data && data.board.shared.key) {
+      document.querySelector('.api #key').value = data.board.shared.key;
+    }
+    if (data && data.board.shared.secretKey) {
+      document.querySelector(`.api #secret-key`).value = data.board.shared.secretKey;
+    }
+    if (data && data.board.shared.bought) {
+      document.querySelector(`.api #bought-key`).value = data.board.shared.bought;
+    }
+    var context = t.getContext();
+    document.querySelector(`b.id-bord`).textContent = context.board;
     t.board("all").then(function (board) {
         if(board.customFields){
             let arrays = board.customFields;
@@ -36,30 +47,18 @@ t.render(() => {
           })
           .then((data) => {
               let arrays = Object.values(data);
-              arrays.forEach((element) => {
-                  jQuery('.api #lineId').append(jQuery("<option></option>", {value: element, text: element}));
-              })
+              for (let i = 0; i < arrays.length; i++) {
+                  jQuery('.api #lineId').append(jQuery("<option></option>", {value: arrays[i], text: arrays[i]}));
+                  if (data && data.board.shared.lineId) {
+                      let lineId = data.board.shared.lineId;
+                      lineId.forEach((element) => {
+                          if (element == arrays[i]) {
+                              jQuery('.api #customFields option')[i].selected = true;
+                          }
+                      });
+                  }
+              }
         });
     }
-    if (data && data.board.shared.lineId) {
-        let values = Array.from(document.getElementById('#lineId').selectedOptions).map(({ value }) => value);
-        let lineId = data.board.shared.lineId;
-        values.forEach((element) => {
-            for (let i = 0; i < lineId.length; i++) {
-                if (element == lineId[i]) jQuery('.api #lineId option')[i].selected = true;
-            }
-        });
-    }
-    if (data && data.board.shared.key) {
-      document.querySelector('.api #key').value = data.board.shared.key;
-    }
-    if (data && data.board.shared.secretKey) {
-        document.querySelector(`.api #secret-key`).value = data.board.shared.secretKey;
-    }
-    if (data && data.board.shared.bought) {
-        document.querySelector(`.api #bought-key`).value = data.board.shared.bought;
-    }
-    var context = t.getContext();
-    document.querySelector(`b.id-bord`).textContent = context.board;
   });
 });
