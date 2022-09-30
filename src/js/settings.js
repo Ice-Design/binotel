@@ -45,8 +45,8 @@ t.render(() => {
           .then((response) => {
               return response.json();
           })
-          .then((data) => {
-              let arrays = Object.values(data);
+          .then((datas) => {
+              let arrays = Object.values(datas);
               for (let i = 0; i < arrays.length; i++) {
                   jQuery('.api #lineId').append(jQuery("<option></option>", {value: arrays[i], text: arrays[i]}));
                   if (data && data.board.shared.lineId) {
