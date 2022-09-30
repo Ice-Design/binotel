@@ -35,7 +35,7 @@ t.render(() => {
             for (let i = 0; i < arrays.length; i++) {
                 jQuery('.api #customFields').append(jQuery("<option></option>", {value: arrays[i]['id'], text: arrays[i]['name']}));
                 if (data && data.board.shared.customFields == arrays[i]['id']) {
-                    jQuery('.api #customFields option')[i].selected = true;
+                    jQuery('.api #lineId option')[i].selected = true;
                 }
             }
         }

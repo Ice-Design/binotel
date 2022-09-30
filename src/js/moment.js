@@ -31,7 +31,7 @@ const btnCallback = function (arg) {
         });
         let lineId = data.board.shared.lineId;
         lineId.forEach((element) => {
-            $('hr.buttons').after($('<button class="calling" id="'+element+'">Call'+element+' 📞</button>'));
+            $('hr.buttons').after($('<button class="calling" id="'+element+'">Call '+element+' 📞</button>'));
         });
     });
 };
