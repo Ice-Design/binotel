@@ -1,5 +1,6 @@
 const t = window.TrelloPowerUp.iframe();
 let number = t.arg('arg');
+console.log(number);
 const btnCallback = function (arg) {
     t.getAll().then((data) => {
         fetch(`https://work.ice-design.pp.ua/binotel.php?phone=${arg}&key=${data.board.shared.key}&secret=${data.board.shared.secretKey}&bought=${data.board.shared.bought}`)
@@ -25,7 +26,6 @@ const btnCallback = function (arg) {
                             $('.num_'+[i]).append($('<b class="no">Зайнятий</b>'));
                             $('.num_'+[i]).append($('<span>', { 'text': new Date(arrays[i]['startTime']*1000).toLocaleString("ro-RO")}));
                         }
-
                     }
                 }
         });
@@ -53,7 +53,7 @@ document.addEventListener( 'click', function ( el ) {
     if ( el.target && el.target.classList.contains( 'calling' ) ) {
         let call_id = el.target.id;
         t.getAll().then((data) => {
-            fetch(`https://work.ice-design.pp.ua/binotel.php?calling=${call_id}&phone=${number}&key=${data.board.shared.key}&secret=${data.board.shared.secretKey}&bought=${data.board.shared.bought}`)
+            fetch(`https://work.ice-design.pp.ua/binotel.php?calling=${call_id}&callphones=${number}&key=${data.board.shared.key}&secret=${data.board.shared.secretKey}&bought=${data.board.shared.bought}`)
             .then((response) => {
                 if (response){
                     jQuery('.calling#'+call_id).css({"background-color": "green","color": "white"});

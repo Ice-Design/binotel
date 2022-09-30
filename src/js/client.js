@@ -15,8 +15,6 @@ const btnCallback = function (t, opts) {
                 }
             }
         });
-
-
     });
 };
 

@@ -24,3 +24,15 @@ legend {
   font-weight: bold;
   padding: 0 4px;
 }
+.api{
+  padding: 5px;
+}
+#lineId{
+  margin-top: 3px;
+  min-width: 50%;
+  max-height: 50px;
+}
+#customFields{
+  margin-top: 3px;
+  min-width: 100%;
+}
