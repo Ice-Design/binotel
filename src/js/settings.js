@@ -31,7 +31,9 @@ t.render(() => {
     document.querySelector(`b.id-bord`).textContent = context.board;
     t.board("all").then(function (board) {
         if(board.customFields){
+            jQuery(".api #customFields option").empty();
             let arrays = board.customFields;
+            jQuery('.api #customFields').append(jQuery("<option></option>", {value: 0, text: 'Оберіть поле'}));
             for (let i = 0; i < arrays.length; i++) {
                 jQuery('.api #customFields').append(jQuery("<option></option>", {value: arrays[i]['id'], text: arrays[i]['name']}));
                 if (data && data.board.shared.customFields == arrays[i]['id']) {
