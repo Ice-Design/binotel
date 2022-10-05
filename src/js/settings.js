@@ -31,7 +31,7 @@ t.render(() => {
     document.querySelector(`b.id-bord`).textContent = context.board;
     t.board("all").then(function (board) {
         if(board.customFields){
-            jQuery(".api #customFields option").empty();
+            jQuery('.api #customFields').find('option').remove();
             let arrays = board.customFields;
             jQuery('.api #customFields').append(jQuery("<option></option>", {value: 0, text: 'Оберіть поле'}));
             for (let i = 0; i < arrays.length; i++) {
